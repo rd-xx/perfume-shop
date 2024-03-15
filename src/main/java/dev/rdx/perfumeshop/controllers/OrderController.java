@@ -8,8 +8,11 @@ import dev.rdx.perfumeshop.services.PerfumesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 @Controller
 public class OrderController {
@@ -17,6 +20,15 @@ public class OrderController {
     private PerfumesService perfumesService;
     @Autowired
     private OrdersService ordersService;
+
+    @GetMapping("/dashboard/orders")
+    public String orders(ModelMap map) {
+        List<Order> orders = ordersService.findAll();
+
+        map.put("orders", orders);
+
+        return "dashboard/orders/index";
+    }
 
     @GetMapping("/order/{perfumeId}")
     public String order(@PathVariable Integer perfumeId, @AuthenticationPrincipal User user) {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Toutes les commandes</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Numéro</th>
+        <th>Date</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Adresse</th>
+        <th>Téléphone</th>
+        <th>Parfum</th>
+        <th>Prix</th>
+        <th>État</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.createdAt}"></td>
+        <td th:text="${order.user.lastName}"></td>
+        <td th:text="${order.user.firstName}"></td>
+        <td th:text="${order.user.address}"></td>
+        <td th:text="${order.user.phone}"></td>
+        <td th:text="${order.perfume.name}"></td>
+        <td th:text="${order.perfume.price}"></td>
+        <td th:text="${order.status}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

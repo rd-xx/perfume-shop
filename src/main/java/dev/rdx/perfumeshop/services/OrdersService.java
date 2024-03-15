@@ -17,7 +17,11 @@ public class OrdersService {
         return repository.save(photos);
     }
 
+    public List<Order> findAll() {
+        return repository.findAll();
+    }
+
     public List<Order> getByUser(User user) {
-        return repository.findByUserAndPerfumeDeletedAtIsNull(user);
+        return repository.findByUser(user);
     }
 }
