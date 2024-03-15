@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Profile</h1>
+<h2>Modifier le profil</h2>
+<form action="/profile/@me" method="post" th:object="${user}">
+    <!-- First name -->
+    <div>
+        <label for="firstName">Prénom</label>
+        <input id="firstName" name="firstName" th:field="*{firstName}">
+    </div>
+
+    <!-- Last name -->
+    <div>
+        <label for="lastName">Nom de famille</label>
+        <input id="lastName" name="lastName" th:field="*{lastName}">
+    </div>
+
+    <!-- Address -->
+    <div>
+        <label for="address">Adresse postale</label>
+        <input id="address" name="address" th:field="*{address}">
+    </div>
+
+    <!-- Phone -->
+    <div>
+        <label for="phone">Numéro de téléphone</label>
+        <input id="phone" name="phone" th:field="*{phone}">
+    </div>
+
+    <!-- Email -->
+    <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" th:field="*{email}">
+    </div>
+
+    <input id="userId" th:field="*{id}" type="hidden"/>
+
+    <div>
+        <button class="bg-amber-500 text-white w-full font-medium" type="submit">Enregistrer</button>
+    </div>
+</form>
+<h2>Orders</h2>
+<table>
+    <tr>
+        <th>Parfum</th>
+        <th>Prix</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.perfume.name}"></td>
+        <td th:text="${'$' + order.perfume.price}"></td>
+        <td th:text="${order.status}"></td>
+    </tr>
+</table>
+</body>
+</html>

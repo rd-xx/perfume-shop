@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -29,7 +30,7 @@ public class PerfumeController {
     }
 
     @PostMapping("/dashboard/perfumes/mutate")
-    public String mutatePerfume(Perfume perfume) {
+    public String mutatePerfume(@ModelAttribute Perfume perfume) {
         perfumesService.save(perfume);
 
         return "redirect:/dashboard/perfumes";

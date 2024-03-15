@@ -37,6 +37,6 @@ public class OrderController {
 
         ordersService.save(order);
 
-        return "redirect:/perfume/" + perfumeId;
+        return "redirect:/profile/@me";
     }
 }
