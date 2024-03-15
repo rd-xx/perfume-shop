@@ -28,6 +28,9 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
+    @OneToMany
+    private List<Order> orders;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

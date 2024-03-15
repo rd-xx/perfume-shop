@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="bg-gray-200" lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-
+<body class="m-4">
+<h1 class="text-4xl font-bold">Liste des parfums</h1>
+<div class="flex flex-wrap items-center" th:each="perfume : ${perfumes}">
+    <div class="bg-white shadow-lg p-4 max-w-md rounded-lg">
+        <a th:href="@{'/perfume/' + ${perfume.id}}" th:text="${perfume.name}"></a>
+        <span th:text="${'$' + perfume.price}"></span>
+    </div>
+</div>
 </body>
 </html>
