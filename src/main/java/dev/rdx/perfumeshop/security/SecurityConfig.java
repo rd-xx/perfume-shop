@@ -11,9 +11,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-
     @Bean
-    public LoginSuccessHandler loginSucessHandler() {
+    public LoginSuccessHandler loginSuccessHandler() {
         return new LoginSuccessHandler();
     }
 
@@ -39,13 +38,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain apiSecurity(HttpSecurity http) throws Exception {
         return http.csrf((csrf) -> csrf.disable()).authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/dashboard/**").hasAnyAuthority("ADMIN")
+                        //.requestMatchers("/dashboard/**").hasAnyAuthority("ADMIN")
                         .requestMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
                         .anyRequest().permitAll()
                 )
                 .formLogin((form) -> form
                         .loginPage("/auth/sign-in")
-                        .successHandler(loginSucessHandler())
+                        .successHandler(loginSuccessHandler())
                 )
                 .build();
     }

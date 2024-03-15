@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
+    <script src="/assets/js-admin/scriptPerfume.js"></script>
+</head>
+<body>
+<h1 th:text="${perfume.id} ? 'Mettre à jour le parfum' : 'Ajouter un parfum'"></h1>
+<form method="post" th:action="@{/dashboard/perfumes/mutate}" th:object="${perfume}">
+    <!-- Name -->
+    <div>
+        <label for="name">Nom</label>
+        <input id="name" name="name" th:field="*{name}">
+    </div>
+
+    <!-- Description -->
+    <div>
+        <label for="description">Description</label>
+        <input id="description" name="description" th:field="*{description}">
+    </div>
+
+    <!-- Price -->
+    <div>
+        <label for="price">Prix</label>
+        <input id="price" name="price" th:field="*{price}" type="number">
+    </div>
+
+    <div id="fileUploader" th:if="${perfume.id}">Upload</div>
+    <input id="perfumeId" th:field="*{id}" type="hidden"/>
+
+    <div>
+        <button class="bg-amber-500 text-white w-full font-medium" th:text="${perfume.id} ? 'Mettre à jour' : 'Ajouter'"
+                type="submit"></button>
+    </div>
+</form>
+</body>
+</html>

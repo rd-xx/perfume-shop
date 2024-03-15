@@ -10,15 +10,15 @@ public class RolesService {
     @Autowired
     private RolesRepository repository;
 
-    public Role findOrSave(String nom) {
-        Role role = repository.findByNameIgnoreCase(nom);
+    public Role findOrSave(String name) {
+        Role role = repository.findByNameIgnoreCase(name);
 
         if (role != null) {
             return role;
         }
 
         role = new Role();
-        role.setName(nom);
+        role.setName(name);
 
         return repository.save(role);
     }

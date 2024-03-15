@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Liste des parfums</title>
 </head>
 <body>
-
+<h1>Liste des parfums</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Prix</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="perfume : ${perfumes}">
+        <td th:text="${perfume.name}"></td>
+        <td th:text="${perfume.description}"></td>
+        <td th:text="${perfume.price}"></td>
+        <td>
+            <a th:href="@{/dashboard/perfumes/{id}/update(id=${perfume.id})}">Mettre à jour</a>
+            <a th:href="@{/dashboard/perfumes/{id}/delete(id=${perfume.id})}">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

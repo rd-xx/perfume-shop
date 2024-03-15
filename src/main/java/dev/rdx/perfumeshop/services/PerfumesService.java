@@ -5,6 +5,8 @@ import dev.rdx.perfumeshop.repositories.PerfumesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PerfumesService {
     @Autowired
@@ -12,6 +14,10 @@ public class PerfumesService {
 
     public Perfume save(Perfume users) {
         return repository.save(users);
+    }
+
+    public List<Perfume> findAll() {
+        return repository.findAll();
     }
 
     public Perfume byId(Integer id) {
