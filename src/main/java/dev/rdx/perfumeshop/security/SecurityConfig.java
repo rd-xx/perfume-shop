@@ -44,7 +44,7 @@ public class SecurityConfig {
                         .anyRequest().permitAll()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/login")
+                        .loginPage("/auth/sign-in")
                         .successHandler(loginSucessHandler())
                 )
                 .build();
