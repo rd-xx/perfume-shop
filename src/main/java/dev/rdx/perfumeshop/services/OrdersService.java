@@ -18,6 +18,6 @@ public class OrdersService {
     }
 
     public List<Order> getByUser(User user) {
-        return repository.findByUser(user);
+        return repository.findByUserAndPerfumeDeletedAtIsNull(user);
     }
 }

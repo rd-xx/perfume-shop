@@ -42,4 +42,11 @@ public class PerfumeController {
 
         return "dashboard/perfumes/mutate";
     }
+
+    @GetMapping("/dashboard/perfumes/{id}/delete")
+    public String deletePerfume(@PathVariable Integer id) {
+        perfumesService.delete(id);
+
+        return "redirect:/dashboard/perfumes";
+    }
 }
